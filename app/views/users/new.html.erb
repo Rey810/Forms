@@ -17,7 +17,7 @@
 
 
 <% # User.new is specified as an instance of the User class is being created here %>
-<%= form_with model: User.new, class: "user_form" do |f| %>
+<%= form_for @user do |f| %>
   <%= f.label :name %>
   <%= f.text_field :username, placeholder: "Enter Your Name" %>
   <%= f.label :email %>
