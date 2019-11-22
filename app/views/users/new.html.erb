@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <form action='/users' method="post" accept-charset="UTF-8">
+
+<% if false %>
+<form action='/users' method="post" accept-charset="UTF-8">
       <input id="name" name="user[username]" type="text">
       <label for="name">Username</label>
       <input id="email" name="user[email]" type="email">
@@ -10,6 +12,24 @@
       <label for="password">Password</label>
       <input type="Submit" value="Submit">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    </form>
+    </form> 
+<% end %>
+
+
+<% # User.new is specified as an instance of the User class is being created here %>
+<%= form_with model: User.new, class: "user_form" do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :username, placeholder: "Enter Your Name" %>
+  <%= f.label :email %>
+  <%= f.email_field :email, placeholder: "example@email.com" %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit "Submit" %>
+<% end %>
+
+
+
+
+
   </body>
 </html>
